@@ -1,5 +1,6 @@
 package com.example.truefalsequiz;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -12,7 +13,8 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 public class MainActivity extends AppCompatActivity {
-
+    boolean correctAnswer = false;
+    String tvExplanation = "הוא לא בן אדם מאוד מושך";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,20 +25,49 @@ public class MainActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+
         Button buttonT = findViewById(R.id.buttonT);
         buttonT.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(MainActivity.this, "בחרת אמת", Toast.LENGTH_SHORT).show();
+
+                boolean userAnswer = true;
+
+                boolean isCorrect;
+                if (userAnswer == correctAnswer) {
+                    isCorrect = true;
+                } else {
+                    isCorrect = false;
+                }
+
+                Intent intent = new Intent(MainActivity.this, ResultActivity.class);
+                intent.putExtra("isCorrect", isCorrect);
+                intent.putExtra("tvExplanation", tvExplanation);
+                startActivity(intent);
+
+
             }
         });
         Button buttonF = findViewById(R.id.buttonF);
         buttonF.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(MainActivity.this, "בחרת שקר", Toast.LENGTH_SHORT).show();
+                boolean userAnswer = false;
+                boolean isCorrect;
+                if(userAnswer == correctAnswer) {
+                    isCorrect = true;
+                } else {
+                    isCorrect = false;
+                }
+                Intent intent = new Intent(MainActivity.this, ResultActivity.class);
+                intent.putExtra("isCorrect", isCorrect);
+                intent.putExtra("tvExplanation", tvExplanation);
+                startActivity(intent);
+
+
             }
         });
+
     }
 
 }

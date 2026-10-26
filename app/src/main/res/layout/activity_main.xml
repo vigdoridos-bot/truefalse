@@ -18,7 +18,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center"
-        android:text="האם אבן שוקלת יותר מנוצה?"
+        android:text="האם ערן מושך???"
         android:layout_weight="1"
         android:textSize="24sp" />
 
@@ -49,7 +49,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:textSize="20dp"
-            android:text="אמר" />
+            android:text="אמת" />
     </LinearLayout>
 
 
